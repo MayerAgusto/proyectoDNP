@@ -1,6 +1,7 @@
 package dev.leonardom.loginjetpackcompose
 
-import android.view.Surface
+
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -9,7 +10,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -17,28 +17,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import dev.leonardom.loginjetpackcompose.ui.theme.components.AutoComplete
 import dev.leonardom.loginjetpackcompose.ui.theme.components.CustomTextfield
 import dev.leonardom.loginjetpackcompose.ui.theme.components.RoundedButton
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen() {
     val nameValue = rememberSaveable{ mutableStateOf("")}
-    val departamentValue = rememberSaveable{ mutableStateOf("")}
-    val passValue = rememberSaveable{ mutableStateOf("")}
-    var passVisibility by remember {
-        mutableStateOf(false)
-    }
+    var selectedItem = rememberSaveable{mutableStateOf("")}
     val focusManager = LocalFocusManager.current
+
+
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val dataStore = UserDataSore(context)
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -99,52 +101,10 @@ fun LoginScreen() {
                                ) ,
                                imeAction = ImeAction.Next
                            )
-                           CustomTextfield(
-                               textFieldValue = departamentValue,
-                               textLabel = "Departamento" ,
-                               keyboardType = KeyboardType.Text,
-                               keyboardActions = KeyboardActions(
-                                   onNext = {
-                                       focusManager.moveFocus(FocusDirection.Down)
-                                   }
-                               ) ,
-                               imeAction = ImeAction.Next
-                           )
-                           CustomTextfield(
-                               textFieldValue = passValue,
-                               textLabel = "Contraseña" ,
-                               keyboardType = KeyboardType.Password,
-                               keyboardActions = KeyboardActions(
-                                   onDone = {
-                                       focusManager.clearFocus()
-                                       // Accion Login
-                                   }
-                               ) ,
-                               imeAction = ImeAction.Done,
-                               trailingIcon = {
-                                   IconButton(
-                                       onClick = {
-                                           passVisibility = !passVisibility
-                                       }) {
-                                      Icon(imageVector =
-                                          if(passVisibility){
-                                                            Icons.Default.Visibility
-                                                            }
-                                          else{
-                                              Icons.Default.VisibilityOff
-                                              },
-                                          contentDescription ="Icono menor" )
-                                       
-                                   }
-                               },
-                               visualTransformation = if(passVisibility){
-                                   VisualTransformation.None
-                               }else{
-                                   PasswordVisualTransformation()
-                               }
-                           )
+                           AutoComplete(selectedItem = selectedItem)
 
                        }
+
                        Column(
                            modifier = Modifier.fillMaxWidth(),
                            horizontalAlignment = Alignment.CenterHorizontally,
@@ -152,7 +112,11 @@ fun LoginScreen() {
                        ){
                            RoundedButton(text = "Inicio", displayProgressBar = false,
                            onClick = {
-                               // boiton de logeo
+                               scope.launch {
+                                   dataStore.saveName(nameValue.value)
+                                   dataStore.saveDepartament(selectedItem.value)
+                               }
+
                            })
                        }
                    }
