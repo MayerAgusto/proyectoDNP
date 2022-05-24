@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose
+package danp.proyecto01.sosmujer
 
 import org.junit.Test
 

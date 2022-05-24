@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.ui.theme
+package danp.proyecto01.sosmujer.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
 
-    primary =   RED900,
+    primary = RED900,
     primaryVariant = BLUE800,
     secondary = CYAN500,
     secondaryVariant = CYAN700,

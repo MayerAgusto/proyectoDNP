@@ -1,7 +1,5 @@
-package dev.leonardom.loginjetpackcompose
+package danp.proyecto01.sosmujer
 
-
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -25,9 +23,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import dev.leonardom.loginjetpackcompose.ui.theme.components.AutoComplete
-import dev.leonardom.loginjetpackcompose.ui.theme.components.CustomTextfield
-import dev.leonardom.loginjetpackcompose.ui.theme.components.RoundedButton
+import danp.proyecto01.sosmujer.ui.theme.components.AutoComplete
+import danp.proyecto01.sosmujer.ui.theme.components.CustomTextfield
+import danp.proyecto01.sosmujer.ui.theme.components.RoundedButton
 import kotlinx.coroutines.launch
 
 @Composable
@@ -35,8 +33,6 @@ fun LoginScreen() {
     val nameValue = rememberSaveable{ mutableStateOf("")}
     var selectedItem = rememberSaveable{mutableStateOf("")}
     val focusManager = LocalFocusManager.current
-
-
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val dataStore = UserDataSore(context)
@@ -113,10 +109,11 @@ fun LoginScreen() {
                            RoundedButton(text = "Inicio", displayProgressBar = false,
                            onClick = {
                                scope.launch {
+                                   if(nameValue.value!=="" && selectedItem.value!==""){
                                    dataStore.saveName(nameValue.value)
                                    dataStore.saveDepartament(selectedItem.value)
+                                   }
                                }
-
                            })
                        }
                    }

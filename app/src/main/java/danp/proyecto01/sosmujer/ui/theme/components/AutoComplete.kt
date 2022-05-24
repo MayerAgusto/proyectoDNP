@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.ui.theme.components
+package danp.proyecto01.sosmujer.ui.theme.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,25 +10,20 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
-
-
-
-
 @Composable
 fun AutoComplete(
     selectedItem: MutableState<String>
 ){
     var expanded by remember { mutableStateOf(false)}
-    var provincias = "Amazonas, Ancash, Apurimac, Arequipa, Ayacucho, Cajamarca, Callao, Cusco, Huancavelica, Huanuco, Ica, Junín, La Libertad, Lambayeque, Lima, Loreto, Madre de Dios, Moquegua, Pasco, Piura, Puno, San Martín, Tacna, Tumbes, Ucayali"
-    //var selectedItem by remember{mutableStateOf("")}
-    val list = provincias.split(",").map { it.trim().toUpperCase() }
+    val provincias = "Amazonas, Ancash, Apurimac, Arequipa, Ayacucho, Cajamarca, Callao, Cusco, Huancavelica, Huanuco, Ica, Junín, La Libertad, Lambayeque, Lima, Loreto, Madre de Dios, Moquegua, Pasco, Piura, Puno, San Martín, Tacna, Tumbes, Ucayali"
+    val list = provincias.split(",").map { it.trim().uppercase() }
     val icon = if (expanded){
         Icons.Filled.KeyboardArrowUp
     }else{
         Icons.Filled.KeyboardArrowDown
     }
 
-    Column() {
+    Column{
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = selectedItem.value,

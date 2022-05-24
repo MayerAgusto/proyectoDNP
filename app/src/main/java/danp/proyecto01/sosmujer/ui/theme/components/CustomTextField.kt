@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.ui.theme.components
+package danp.proyecto01.sosmujer.ui.theme.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions

@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.ui.theme
+package danp.proyecto01.sosmujer.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -6,9 +6,7 @@ import androidx.compose.ui.graphics.Color
 val RED600 = Color(0xFFA7637A)  //Error
 val RED900 = Color(0xFFB80D09)  // Primary
 
-/*
-    BLUE LIGHT PALETTE
- */
+// BLUE LIGHT PALETTE
 val Blue500 = Color(0xFF2196f3)  // Primary
 val BLUE800 = Color(0xFF0277BD)  // PrimaryVariant
 val CYAN500 = Color(0xFF00bcd4)  // Secondary
@@ -23,9 +21,5 @@ val BLUEGREY900 = Color(0xff000a12)  // Background
 val BLUEGREY800 = Color(0xff263238)  // Surface
 val RED800 = Color(0xffba000d)  //Error
 
-
-/*
-    SOCIAL MEDIA COLORS
- */
 val FACEBOOKCOLOR = Color(0xFF4267B2)
 val GMAILCOLOR = Color(0xFFDB4437)

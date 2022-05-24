@@ -1,6 +1,5 @@
-package dev.leonardom.loginjetpackcompose.ui.theme.components
+package danp.proyecto01.sosmujer.ui.theme.components
 
-import android.widget.ProgressBar
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width

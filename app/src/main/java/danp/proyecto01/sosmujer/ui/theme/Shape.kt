@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.ui.theme
+package danp.proyecto01.sosmujer.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

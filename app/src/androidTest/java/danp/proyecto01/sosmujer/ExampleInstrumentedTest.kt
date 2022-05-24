@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose
+package danp.proyecto01.sosmujer
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
