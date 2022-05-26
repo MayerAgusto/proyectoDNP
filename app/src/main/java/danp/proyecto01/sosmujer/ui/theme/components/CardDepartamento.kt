@@ -1,6 +1,5 @@
 package danp.proyecto01.sosmujer.ui.theme.components
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.material.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+
 @Composable
 fun CardDepartamento(cn: Centros){
     Surface(shape = RoundedCornerShape(8.dp),
@@ -42,17 +42,14 @@ fun CardDepartamento(cn: Centros){
             if(estado is AsyncImagePainter.State.Loading){
                 CircularProgressIndicator()
             }
-
             Spacer(modifier = Modifier.height(16.dp))
             Row(modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly) {
                 Column() {
                     Text(text = cn.nombre.toString() + "\n" + cn.provincia.toString()+"\n",color = Color.Black, style = MaterialTheme.typography.h5)
                     Text( text ="Direccion : "+cn.direccion.toString()+"\n"+ "Coordinador : "+cn.coordinador.toString(),color = Color.Gray,style = MaterialTheme.typography.h6)
-
                 }
             }
-
         }
     }
 }

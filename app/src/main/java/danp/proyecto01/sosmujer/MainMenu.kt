@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Museum
 import androidx.compose.runtime.*
@@ -72,7 +73,13 @@ fun SecondView() {
                         onClick = {
                             exitProcess(0)
                         },
-                        modifier = Modifier.weight(15.0f)
+                        modifier = Modifier.weight(15.0f),
+
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = MaterialTheme.colors.secondaryVariant,
+                            contentColor = Color.White
+
+                        )
                     )
                     {
                         Column(
@@ -101,7 +108,11 @@ fun SecondView() {
                             nextView=false
                         },
                         modifier = Modifier.weight(15.0f),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = MaterialTheme.colors.secondaryVariant,
+                            contentColor = Color.White
 
+                        )
                     )
                     {
                         Column(
@@ -129,6 +140,22 @@ fun SecondView() {
 
         else{
             CEMList(viewModel = CemViewModel(departamento))
+            FloatingActionButton(
+                modifier = Modifier
+                    .size(72.dp),
+                backgroundColor = MaterialTheme.colors.primary,
+                onClick = {
+                    nextView=true
+                }) {
+                Icon(
+                    modifier = Modifier.size(42.dp),
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Icono boton",
+                    tint = Color.White
+                )
+            }
+
+
         }
     }
 }
